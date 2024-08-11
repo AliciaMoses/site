@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <title>{{ page.title }}</title>
+    <link rel="icon" type="image/x-icon" href="assets/tab_icon.png">
+</head>
+
+<body>
+    <div class="blog-index">
+        <div class="nav">
+            <div class="nav-item home-icon"><a href="/index.html"><img
+                        src="/assets/home_50dp_E8EAED_FILL0_wght200_GRAD200_opsz48.svg" alt="home icon"></a></div>
+                        <div class="nav-item center-submenu">                  
+                            <a href="/index.html"><span class="center-submenu-text">Home</span></a>
+                            <a href="/views/books.html"><span class="center-submenu-text">Books</span></a>
+                            <a href="/views/tools.html"><span class="center-submenu-text">Tools</span></a>
+                        </div>
+            <div class="menu">
+                <img class="menu-btn" src="/assets/menu_50dp_E8EAED_FILL0_wght200_GRAD200_opsz48.svg" alt="menu icon">
+                <div class="menu-content">
+                    <a href="/index.html">Home</a>
+                    <a href="/views/books.html">Books</a>
+                    <a href="/views/tools.html">Tools</a>
+                    <a href="https://github.com/aliciamoses">Github</a>
+                </div>
+            </div>
+        </div>
+        <div class="blog-index-hero">
+            <div class="landing-hero-header">
+                <div class="divider">
+                    <span class="divider-text" id="headerText">{{ page.title }}</span>
+                </div>
+            </div>
+            <div class="blog-index-hero-search">
+                {% include search.html %}
+            </div>
+           <div class="blog-index-hero-content">
+               {{ content }}
+           </div>
+     
+        </div>
+    </div>
+
+    <script type="module" src="/scripts/dropdown.js"></script>
+</body>
+
+</html>

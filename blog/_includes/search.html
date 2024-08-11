@@ -1,0 +1,141 @@
+
+<div class="search-icon">
+    <img src="/assets/search_24dp_E8EAED_FILL0_wght200_GRAD0_opsz24.svg" alt="search icon">
+</div>
+<input type="text" id="site-search-input" placeholder="Search all posts..." 
+        class="search-input" aria-label="Search">
+    <div id="site-search-results" class="search-results"></div>
+
+<script>
+class GitHubPagesSearch {
+    constructor(baseurl = '') {
+        this.baseurl = baseurl;
+        this.searchIndex = null;
+        this.documents = null;
+        this.initialized = false;
+    }
+
+    async initialize() {
+        if (this.initialized) return;
+
+        try {
+            const response = await fetch(`${this.baseurl}/search.json`);
+            const data = await response.json();
+
+            this.documents = data.posts.map(post => ({
+                id: post.url,
+                title: post.title,
+                content: post.content,
+                url: `${this.baseurl}${post.url}`,
+                date: post.date
+            }));
+
+            this.searchIndex = lunr(function() {
+
+                this.pipeline.remove(lunr.stopWordFilter);
+                this.pipeline.remove(lunr.stemmer);
+
+                this.field('title', {
+                    boost: 10
+                });
+                this.field('content');
+                this.ref('id');
+
+                data.posts.forEach(doc => {
+                    this.add({
+                        id: doc.url,
+                        title: doc.title,
+                        content: doc.content
+                    });
+                });
+            });
+
+            this.initialized = true;
+        } catch (error) {
+            console.error('Error initializing search:', error);
+        }
+    }
+
+    async search(query) {
+        if (!this.initialized) {
+            await this.initialize();
+        }
+
+        if (!query.trim()) return [];
+
+        let results = [];
+
+        if (query.length < 2) {
+            const searchTerm = query.toLowerCase();
+            this.documents.forEach(doc => {
+                if (doc.title.toLowerCase().includes(searchTerm) ||
+                    doc.content.toLowerCase().includes(searchTerm)) {
+                    results.push({
+                        ref: doc.id,
+                        score: doc.title.toLowerCase().includes(searchTerm) ? 2 : 1
+                    });
+                }
+            });
+        } else {
+
+            results = this.searchIndex.search(query + '* ' + query);
+        }
+
+        return results.map(result => {
+            const doc = this.documents.find(d => d.id === result.ref);
+            return {
+                ...doc,
+                score: result.score,
+                snippet: this.generateSnippet(doc.content, query)
+            };
+        });
+    }
+
+    generateSnippet(content, query) {
+        const words = query.toLowerCase().split(' ');
+        const contentLower = content.toLowerCase();
+        let snippetStart = 0;
+
+        for (const word of words) {
+            const index = contentLower.indexOf(word);
+            if (index !== -1) {
+                snippetStart = Math.max(0, index - 60);
+                break;
+            }
+        }
+
+        let snippet = content.substring(snippetStart, snippetStart + 150);
+        if (snippetStart > 0) snippet = '...' + snippet;
+        if (snippet.length < content.length) snippet += '...';
+
+        return snippet;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const baseurl = '{{ site.baseurl }}';
+    const siteSearch = new GitHubPagesSearch(baseurl);
+    const searchInput = document.getElementById('site-search-input');
+    const searchResults = document.getElementById('site-search-results');
+    let debounceTimeout;
+    searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(async () => {
+            const query = e.target.value;
+            if (!query.trim()) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            const results = await siteSearch.search(query);
+            searchResults.innerHTML = results.length ? results.map(result => `    <div class="search-result-item" onclick="window.location.href='${result.url}'">     <div class="result-title">${result.title}</div>     <div class="result-snippet">${result.snippet}</div>     <div class="result-meta">      ${result.date ? result.date : ''}     </div>    </div>   `).join('') : '<div class="search-result-item">No results found</div>';
+            searchResults.style.display = 'block';
+        }, 300);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.style.display = 'none';
+        }
+    });
+});
+</script> 

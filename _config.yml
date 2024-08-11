@@ -1,0 +1,4 @@
+base_url: ""
+theme: null
+layouts_dir: blog/_layouts
+includes_dir: blog/_includes

@@ -1,0 +1,9 @@
+.DS_Store
+.history
+.history/
+.vscode/
+.DS_Store
+Gemfile
+Gemfile.lock
+
+_site
