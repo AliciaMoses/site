@@ -1,0 +1,437 @@
+/* Root */
+:root {
+  --ash: rgb(24, 26, 26);
+  --grey: rgb(90, 90, 90);
+  --chrome: rgb(120, 120, 120);
+  --faint-gray: rgb(170, 170, 170);
+  --white: rgb(213, 212, 212);
+  /* transparancy and shadows */
+  --black-transp: rgba(97, 89, 89, 0.108);
+  --white-transp: rgba(255, 255, 255, 0.1);
+  --box-shadow-dark: rgba(0, 0, 0, 0.2);
+  /* text */
+  --text-mono: 'Courier New', monospace;
+  --text-display: 2.4rem;
+  --xxl: 6rem;
+  --text-thin: 200;
+}
+
+/* Base Styles */
+body {
+  font-family: var(--text-mono);
+  background-color: var(--ash);
+  color: var(--white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 100;
+}
+
+a {
+  color: inherit;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+
+/* Components */
+
+
+.card {
+  border: 0.5px solid var(--white);
+  padding: 5%;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.card:hover {
+  background-color: var(--white-transp);
+}
+
+.card p {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.card-header {
+  margin-top: 1%;
+  font-size: 0.8rem;
+  opacity: 0.9;
+  color: var(--gray-light);
+}
+ 
+.card-text {
+  font-size: 0.6rem;
+  opacity: 1;
+}
+
+/* Typography */
+
+.left {
+  text-align: left;
+}
+
+.list-key {
+  color: var(--chrome);
+}
+
+.list-header {
+  color: var(--grey);
+  font-size: small;
+  background-color: var(--black-transp);
+}
+
+.hero-text {
+  text-align: start;
+  letter-spacing: 0.1em;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+.hero-text a {
+  letter-spacing: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--chrome);
+}
+
+.hero-text a:hover {
+  letter-spacing: 0.15rem;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--chrome);
+
+}
+
+/* Base Grid Layouts */
+.container {
+  display: grid;
+  grid-template-columns: 0.4fr 2.2fr 0.4fr;
+  gap: 0;
+}
+
+/* Column Layouts */
+.two-column {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  .two-column {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+.two-column>div {
+  min-width: 0;
+  /* Prevents overflow */
+}
+
+.three-column {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Medium screens - change to 2 columns */
+@media screen and (max-width: 1024px) {
+  .three-column {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small screens - change to 1 column */
+@media screen and (max-width: 768px) {
+  .three-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+.three-column>div {
+  min-width: 0;
+  /* Prevents overflow */
+}
+
+
+/* Grid Layouts */
+.index-container {
+  display: grid;
+  grid-template-columns: 0.4fr 2.2fr 0.4fr;
+  grid-template-rows: auto minmax(365px, auto) auto auto;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". nav ."
+    ". hero ."
+    ". continue-divider ."
+    ". main-content ."
+    ". secondary-content .";
+}
+
+.list-view-container {
+  display: grid;
+  grid-template-columns: 0.4fr 2.2fr 0.4fr;
+  grid-template-rows: auto minmax(100px, auto) auto auto;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". nav ."
+    ". main-content ."
+    ". secondary-content .";
+}
+
+.nav {
+  grid-area: nav;
+  padding: 4%;
+  float: right;
+  justify-content: flex-end;
+  display: grid;
+}
+
+/* Menu  */
+.menu {
+  position: relative;
+  width: 40px;
+}
+
+.menu-btn {
+  background: none;
+  display: inline-block;
+  cursor: pointer;
+  width: 100%;
+}
+
+.menu-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--ash);
+  border: 0.4px solid var(--white);
+  box-shadow: 0px 8px 16px 0px var(--box-shadow-dark);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  padding: 2%;
+  z-index: 1000;
+  min-width: max-content;
+}
+
+.menu.open .menu-content {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.menu-content a {
+  padding: 8px;
+  color: var(--white);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+
+}
+
+.menu-content a:hover {
+  background-color: var(--grey);
+}
+
+.main-content {
+  grid-area: main-content;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  text-align: center;
+  letter-spacing: 0.1em;
+  padding: 1%;
+}
+
+.secondary-content {
+  grid-area: secondary-content;
+}
+
+.hero {
+  grid-area: hero;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  text-align: center;
+  letter-spacing: 0.1em;
+  padding: 1%;
+}
+
+.site-map {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+
+/* Layout Components */
+
+
+
+#siteMap {
+  display: none;
+}
+
+#siteMap ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#siteMap li {
+  margin-bottom: 10px;
+}
+
+.hero-slides {
+  display: none;
+}
+
+.slideshow-container {
+  position: relative;
+}
+
+.clean-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.clean-list li {
+  margin-bottom: 2px;
+}
+
+.clean-list a {
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+  padding: 2px 0;
+}
+
+.clean-list a:hover {
+  background-color: var(--gray-light);
+  padding-left: 2px;
+  transition: all 0.2s ease;
+}
+
+
+/* Utility Classes */
+.divider {
+  display: grid;
+  grid-template-columns: 1fr auto 9fr;
+  align-items: center;
+  text-align: center;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  border-top: 2px solid var(--faint-gray);
+}
+
+.divider-text {
+  margin: 0 0.5rem;
+}
+
+.cursor {
+  font-size: var(--xxl);
+}
+
+.prompt-cursor {
+  animation: 2000ms ease infinite alternate blink;
+}
+
+.prompt-cursor:hover {
+  animation: none;
+  font-style: oblique;
+  animation-play-state: paused;
+  opacity: 1;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.tag {
+  color: var(--grey);
+  font-size: small;
+  background-color: var(--black-transp);
+}
+
+
+/* Animations */
+.blink {
+  animation: blink 2s linear infinite;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+
+  100% {
+    opacity: 0.8;
+    display: grid;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    display: grid
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
