@@ -5,9 +5,11 @@
   --chrome: rgb(120, 120, 120);
   --faint-gray: rgb(170, 170, 170);
   --white: rgb(213, 212, 212);
-  /* transparancy */
+  /* transparancy and shadows */
   --black-transp: rgba(97, 89, 89, 0.108);
   --white-transp: rgba(255, 255, 255, 0.1);
+  --box-shadow-dark: rgba(0, 0, 0, 0.2);
+  /* text */
   --text-mono: 'Courier New', monospace;
   --text-display: 2.4rem;
   --xxl: 6rem;
@@ -201,6 +203,53 @@ a {
   float: right;
   justify-content: flex-end;
   display: grid;
+}
+
+/* Menu  */
+.menu {
+  position: relative;
+  width: 40px;
+}
+
+.menu-btn {
+  background: none;
+  display: inline-block;
+  cursor: pointer;
+  width: 100%;
+}
+
+.menu-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--ash);
+  border: 0.4px solid var(--white);
+  box-shadow: 0px 8px 16px 0px var(--box-shadow-dark);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  padding: 2%;
+  z-index: 1000;
+  min-width: max-content;
+}
+
+.menu.open .menu-content {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.menu-content a {
+  padding: 8px;
+  color: var(--white);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+
+}
+
+.menu-content a:hover {
+  background-color: var(--grey);
 }
 
 .main-content {
