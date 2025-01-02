@@ -21,6 +21,7 @@ body {
   font-family: var(--text-mono);
   background-color: var(--ash);
   color: var(--white);
+  font-size: clamp(100%, 1rem + 2vw, 19px);
 }
 
 h1,
@@ -35,13 +36,12 @@ p {
 
 a {
   color: inherit;
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   text-decoration: none;
 }
 
 
 /* Components */
-
 
 .card {
   border: 0.5px solid var(--white);
@@ -56,19 +56,19 @@ a {
 
 .card p {
   margin-top: 10px;
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
   opacity: 0.8;
 }
 
 .card-header {
   margin-top: 1%;
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
   opacity: 0.9;
   color: var(--gray-light);
 }
  
 .card-text {
-  font-size: 0.6rem;
+  /* font-size: 0.6rem; */
   opacity: 1;
 }
 
@@ -84,14 +84,14 @@ a {
 
 .list-header {
   color: var(--grey);
-  font-size: small;
+  /* font-size: small; */
   background-color: var(--black-transp);
 }
 
 .hero-text {
   text-align: start;
   letter-spacing: 0.1em;
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   line-height: 1.7;
   margin-left: 7%;
   margin-right: 7%;
@@ -253,7 +253,8 @@ a {
 }
 
 .menu-content a:hover {
-  background-color: var(--grey);
+  /* background-color: var(--grey); */
+  font-weight: bolder;
 }
 
 .main-content {
@@ -287,11 +288,13 @@ a {
   margin-top: 4.4%;
   /* margin-bottom: 5%; */
 }
-
+@media (max-width: 480px) {
+  .site-map {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 
 /* Layout Components */
-
-
 
 #siteMap {
   display: none;
@@ -355,6 +358,7 @@ a {
 
 .divider-text {
   margin: 0 0.5rem;
+  /* font-size: larger; */
 }
 
 .cursor {
@@ -372,11 +376,12 @@ a {
   opacity: 1;
   letter-spacing: 2px;
   cursor: pointer;
+  font-weight: bolder;
 }
 
 .tag {
   color: var(--grey);
-  font-size: small;
+  /* font-size: small; */
   background-color: var(--black-transp);
 }
 
