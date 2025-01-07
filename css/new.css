@@ -106,7 +106,6 @@ p {
 .hero-content {
     display: grid;
     grid-area: hero-content;
-
     min-height: 50vh;
 }
 
@@ -121,6 +120,7 @@ p {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  
 }
 
 
@@ -458,4 +458,8 @@ p {
 .fade {
   animation-name: fade;
   animation-duration: 1.5s;
+}
+
+#continueBtn {
+  white-space: nowrap;
 }
