@@ -4,16 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Hello - this is still a wip</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <title>alicia moses.dev</title>
     <link rel="icon" type="image/x-icon" href="assets/tab_icon.png">
 </head>
 
 <body>
-    <div class="index-container">
+    <div class="base">
         <div class="nav">
+            <div class="nav-item home-icon"><a href="#"><img
+                        src="/assets/home_50dp_E8EAED_FILL0_wght200_GRAD200_opsz48.svg" alt="home icon"></a></div>
+            <div class="nav-item center-submenu">
+                <a href="/views/reads.html"><span>[ reads ]</span></a>
+                <a href="/views/tools.html"><span>[ dev tools ]</span></a>
+                <a href="/blog">
+                    <span>[ blog ]</span></a>
+            </div>
             <div class="menu">
-                <img class="menu-btn" src="/assets/menu_24dp_E8EAED_FILL0_wght100_GRAD0_opsz24.svg" alt="menu">
+                <img class="menu-btn" src="/assets/menu_50dp_E8EAED_FILL0_wght200_GRAD200_opsz48.svg" alt="menu icon">
                 <div class="menu-content">
                     <a href="/blog">blog</a>
                     <a href="/views/reads.html">reads</a>
@@ -23,47 +31,49 @@
             </div>
         </div>
         <div class="hero">
-            <div class="divider">
-                <span class="divider-text" id="headerText">About</span>
+            <div class="hero-header">
+                <div class="divider">
+                    <span class="divider-text" id="headerText">About</span>
+                </div>
             </div>
-            <div class="slideshow-container">
-                <div class="hero-slides fade">
-                    <h4 class="hero-text">
-                        Hi, I'm a long-time hobbyist coder turned software developer.</h4>
-                        <h4 class="hero-text">
-                            I've created this site to share
-                            things I find useful and interesting.</h4>
-                    <h4 class="hero-text">
-                        Check out my <a href="/blog">blog posts</a>, or take a look around...
+            <div class="hero-slide">
+                <div class="hero-content">
+                    <h4><span class="break-line">Hi, </span>I'm software developer focused primarily on building web
+                        apps using python.<span class="break-line"> I've created this space to keep a collection of
+                            things I find useful and interesting.</span><span class="break-line">Check out my blog <a
+                                href="/blog">here</a>, or continue to explore the site.</span>
                     </h4>
                 </div>
-                <div class="hero-slides fade">
-                    <div class="site-map">
-                        <div class="card">
-                            <div class="card-header">Reads</div>
-                            <div class="card-body"><p class="card-text">A brief collection of recent reads.</p></div>
+            </div>
+            <div class="hero-slide fade">
+                <div class="hero-content site-map">
+                    <div class="card">
+                        <div class="card-header">Reads</div>
+                        <div class="card-body">
+                            <p class="card-text">A brief collection of recent reads.</p>
                         </div>
-                        <div class="card">
-                            <div class="card-header">Tools</div>
-                            <div class="card-body"><p class="card-text">A collection of useful web resources.</p></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Tools</div>
+                        <div class="card-body">
+                            <p class="card-text">A collection of useful web resources.</p>
                         </div>
-                        <div class="card">
-                            <div class="card-header">Snippets</div>
-                            <div class="card-body"><p class="card-text">A mixture of scripts, code utils and shortcuts.</p></div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">Blog</div>
-                            <div class="card-body"><p class="card-text">Thoughts and ideas on various technical topics.</p></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Blog</div>
+                        <div class="card-body">
+                            <p class="card-text">Thoughts and ideas on various technical topics.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div>
-                <p class="prompt-cursor" id="continueBtn">[ continue ]</p>
+            <div class="slide-navigator">
+                <p class="blink" id="continueBtn">[ continue ]</p>
             </div>
         </div>
-        <script type="module" src="/scripts/hero.js"></script>
-        <script type="module" src="/scripts/dropdown.js"></script>
+    </div>
+    <script type="module" src="/scripts/hero.js"></script>
+    <script type="module" src="/scripts/dropdown.js"></script>
 </body>
 
 </html>

@@ -5,33 +5,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="icon" type="image/x-icon" href="/assets/tab_icon.png">
   <title>{{ page.title }}</title>
+  <link rel="icon" type="image/x-icon" href="assets/tab_icon.png">
 </head>
 
 <body>
-  <div class="index-container">
+  <div class="base">
     <div class="nav">
+      <div class="nav-item home-icon"><a href="/index.html"><img
+            src="/assets/home_50dp_E8EAED_FILL0_wght200_GRAD200_opsz48.svg" alt="home icon"></a></div>
+      <div class="nav-item center-submenu">
+        <a href="/views/reads.html"><span>[ reads ]</span></a>
+        <a href="/blog">
+          <span>[ back to blog ]</span></a>
+        <a href="/views/tools.html"><span>[ dev tools ]</span></a>
+      </div>
       <div class="menu">
-        <img class="menu-btn" src="/assets/menu_24dp_E8EAED_FILL0_wght100_GRAD0_opsz24.svg" alt="menu">
+        <img class="menu-btn" src="/assets/menu_50dp_E8EAED_FILL0_wght200_GRAD200_opsz48.svg" alt="menu icon">
         <div class="menu-content">
-          <a href="/index.html">home</a>
-          <a href="/views/tools.html">tools</a>
+          <a href="/blog">all blog posts</a>
           <a href="/views/reads.html">reads</a>
+          <a href="/views/tools.html">tools</a>
           <a href="https://github.com/aliciamoses">github</a>
         </div>
       </div>
     </div>
     <div class="hero">
-      <div class="divider">
-        <span class="divider-text">{{ page.title }}</span>
+      <div class="hero-header">
+        <div class="divider">
+          <span class="divider-text" id="headerText">{{ page.title }}</span>
+        </div>
       </div>
-      <div class="hero-text">
-        {{ content }}
-      </div>
-      <div>
-      </div>
-      <script type="module" src="/scripts/dropdown.js"></script>
+      {{ content }}
+    </div>
+  </div>
+
+  <script type="module" src="/scripts/dropdown.js"></script>
 </body>
 
 </html>
