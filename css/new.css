@@ -1,0 +1,462 @@
+/* Root Variables */
+:root {
+    /* Color Vars */
+    --ash: rgb(24, 26, 26);
+    --grey: rgb(90, 90, 90);
+    --chrome: rgb(120, 120, 120);
+    --faint-gray: rgb(170, 170, 170);
+    --white: rgb(213, 212, 212);
+    
+    /* Opacity & Shadow Vars */
+    --black-transp: rgba(97, 89, 89, 0.108);
+    --white-transp: rgba(255, 255, 255, 0.1);
+    --box-shadow-dark: rgba(0, 0, 0, 0.2);
+    
+    /* Typography Vars */
+    --text-mono: 'Courier New', monospace;
+    --text-thin: 200;
+    --lh-lg: 2;
+}
+  /* Responsive Scaling with Media Queries */
+  @media (min-width: 768px) {
+    :root {
+      --base-size: 1.125rem;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    :root {
+      --base-size: 1.25rem; 
+    }
+  }
+
+/* Base Styles */
+
+body {
+    font-family: var(--text-mono);
+    background-color: var(--ash);
+    color: var(--white);
+    font-size: clamp(100%, 1rem + 2vw, 19px);
+}
+
+/* Typography */
+
+  
+h2 {
+    font-weight: var(--text-thin);
+  }
+  
+h3 {
+    font-weight: var(--text-thin);
+    
+  }
+  
+h4 {
+    font-weight: var(--text-thin);
+  }
+
+  
+p {
+    font-weight: var(--text-thin);
+    line-height: 1.8;
+  }
+
+/* Base Layout */
+.base {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas:
+        "nav nav nav nav nav nav"
+        ". hero hero hero hero .";
+    height: 100vh;
+}
+
+/* Hero Layout*/
+.hero {
+    display: grid;
+    grid-area: hero;
+    grid-template-columns: repeat(6, 1fr);
+    /* grid-template-rows: auto 1fr auto;  */
+    grid-template-areas: 
+        "hero-header hero-header hero-header hero-header hero-header hero-header"
+        "hero-slide hero-slide hero-slide hero-slide hero-slide hero-slide"
+        ". . slide-navigator slide-navigator . .";
+    margin-top: 6%;
+}
+
+
+/* Hero Header */
+.hero-header {
+    display: grid;
+    grid-area: hero-header;
+}
+
+/* Hero Slide Section */
+.hero-slide {
+    display: grid;
+    grid-area: hero-slide;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "hero-content"
+}
+
+/* Hero Text */
+.hero-content {
+    display: grid;
+    grid-area: hero-content;
+    height: 50vh;
+    min-height: 50vh;
+    max-height: 50vh;
+}
+
+.hero-content h4 {
+  line-height: var(--lh-lg);
+}
+
+
+.slide-navigator {
+  display: grid;
+  grid-area: slide-navigator;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+/* Site Map */
+.site-map {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+/* Utility Classes */
+.divider {
+    display: grid;
+    grid-template-columns: 1fr auto 9fr;
+    align-items: center;
+    text-align: center;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    border-top: 2px solid var(--faint-gray);
+}
+
+.divider-text {
+    margin: 0 0.5rem;
+}
+.break-line {
+    display: block;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+    .site-map {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+#siteMap {
+    display: none;
+}
+
+
+.card {
+ display: grid;
+  padding: 5%;
+  box-sizing: border-box;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.card:hover {
+  background-color: var(--white-transp);
+}
+
+.card p {
+  opacity: 0.8;
+}
+
+.card-header {
+  margin-top: 1%;
+  opacity: 0.9;
+  color: var(--gray-light);
+}
+ 
+.card-text {
+  opacity: 1;
+}
+
+
+/* Nav */
+.nav {
+    grid-area: nav;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas: "home center menu"; 
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 1%;
+}
+
+/* Nav Items */
+.nav-item {
+    padding: 5px;
+}
+
+/* Home Icon */
+.home-icon {
+    grid-area: home;
+    justify-self: start;
+}
+
+/* Center Icons */
+.center-submenu {
+    grid-area: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px;
+    justify-items: center; 
+    align-items: center; 
+    text-align: center;
+}
+
+/* Center Icon Links */
+.center-submenu a {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.center-submenu span {
+    margin-top: 5px; 
+}
+
+/* Center Icons - Responsive */
+@media (max-width: 600px) {
+    .center-submenu {
+        display: none; /* Hide center icons on small devices */
+    }
+}
+
+/* Menu */
+.menu {
+    display: grid;
+    grid-area: menu;
+    justify-self: end; 
+    position: relative;
+}
+
+/* Menu Button */
+.menu-btn {
+    justify-self: end;
+    cursor: pointer;
+}
+
+/* Menu Content */
+.menu-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--ash);
+    border: 0.4px solid var(--white);
+    box-shadow: 0px 8px 16px 0px var(--box-shadow-dark);
+    padding: 2%;
+    z-index: 1000;
+    width: 1fr;
+    min-width: max-content;
+    margin-right: 2%;
+}
+
+/* Open Menu */
+.menu.open .menu-content {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+/* Menu Links */
+.menu-content a {
+    padding: 8px;
+    color: var(--white);
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.menu-content a:hover {
+    font-weight: bolder;
+}
+
+
+.list-view {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas:
+        "nav nav nav nav nav nav"
+        ".list-content list-content list-content list-content  .";
+    height: 100vh;
+}
+
+/* Base Layout - Hero Section */
+.list-content {
+    display: grid;
+    grid-area: list-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto; 
+    grid-template-areas: 
+        "list-content-header"
+        "three-column";
+    margin-top: 4%;
+}
+
+
+/* list-Hero Header */
+.list-content-header {
+    display: grid;
+    grid-area: list-content-header;
+}
+
+/* list-Hero Slide Section */
+.three-column {
+    display: grid;
+    grid-area: "three-column";
+    grid-template-columns: repeat(3, 1fr);
+
+  }
+  
+  /* Medium screens - change to 2 columns */
+  @media screen and (max-width: 1024px) {
+    .three-column {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Small screens - change to 1 column */
+  @media screen and (max-width: 768px) {
+    .three-column {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .three-column>div {
+    min-width: 0;
+    /* Prevents overflow */
+  }
+
+  .list-group{
+    margin: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+  
+
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+  
+  .list li {
+    margin-bottom: 2px;
+  }
+  
+  .list a {
+    color: var(--white);
+    text-decoration: none;
+    display: block;
+    padding: 2px 0;
+  }
+  
+  .list a:hover {
+    background-color: var(--gray-light);
+    padding-left: 2px;
+    transition: all 0.2s ease;
+  }
+  
+  .list-key {
+    color: var(--chrome);
+  }
+  
+  .list-header {
+    color: var(--grey);
+    font-size: small;
+    background-color: var(--black-transp);
+  }
+
+  .two-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 1200px) {
+    .two-column {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .two-column {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .two-column>div {
+    min-width: 0;
+    /* Prevents overflow */
+  }
+
+
+
+/* Animations */
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Animations - styling */
+
+.blink{
+  animation: 2000ms ease infinite alternate blink;
+}
+
+.blink:hover {
+  animation: none;
+  font-style: oblique;
+  animation-play-state: paused;
+  opacity: 1;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}

@@ -4,34 +4,37 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/new.css">
     <link rel="icon" type="image/x-icon" href="/assets/tab_icon.png">
     <title>reads</title>
 </head>
 
 <body>
-    <div class="list-view-container">
+    <div class="list-view">
         <div class="nav">
+            <div class="nav-item home-icon"><a href="/index.html"><img
+                        src="/assets/home_50dp_E8EAED_FILL0_wght200_GRAD200_opsz48.svg" alt="home icon"></a></div>
             <div class="menu">
-                <img class="menu-btn" src="/assets/menu_24dp_E8EAED_FILL0_wght100_GRAD0_opsz24.svg" alt="menu">
+                <img class="menu-btn" src="/assets/menu_50dp_E8EAED_FILL0_wght200_GRAD200_opsz48.svg" alt="menu icon">
                 <div class="menu-content">
-                    <a href="/index.html">home</a>
+                    <a href="/blog">blog</a>
                     <a href="/views/tools.html">tools</a>
-                    <a href="/views/blog.html">blog</a>
                     <a href="https://github.com/aliciamoses">github</a>
                 </div>
             </div>
         </div>
-        <div class="main-content">
-            <div class="divider">
-                <span class="divider-text">Reads</span>
+        <div class="list-content">
+            <div class="list-content-header">
+                <div class="divider">
+                    <span class="divider-text">Reads</span>
+                </div>
             </div>
             <div class="two-column">
-                <div>
-                    <h4 class="left">
+                <div class="list-group">
+                    <h4>
                         <span class="list-header">/* python */</span>
                     </h4>
-                    <ul class="clean-list">
+                    <ul class="list">
                         <li>
                             <a href="https://www.oreilly.com/library/view/python-cookbook-3rd/9781449357337/">Python
                                 Cookbook</a>
@@ -59,12 +62,12 @@
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <ul class="clean-list">
-                        <h4 class="left">
-                            <span class="list-header">/* software engineering
-                                process */</span>
-                        </h4>
+                <div class="list-group">
+                    <h4>
+                        <span class="list-header">/* software engineering process */</span>
+                    </h4>
+                    <ul class="list">
+    
                         <li>
                             <a href="https://themissingreadme.com/">The Missing README</a>
                         </li>
@@ -95,10 +98,8 @@
                                 PostgreSQL 10</a>
                         </li>
                     </ul>
-                </div>
-                <div>
-                    <ul class="clean-list">
-                        <h4 class="left">
+                    <ul class="list">
+                        <h4>
                             <span class="list-header">/* problem-solving */</span>
                         </h4>
                         <li>
@@ -119,6 +120,7 @@
             </div>
         </div>
     </div>
+
     <script type="module" src="/scripts/dropdown.js"></script>
 </body>
 

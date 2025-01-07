@@ -12,7 +12,7 @@ function currentSlide(n) {
 
 function showSlides(n) {
   let i;
-  let slides = document.getElementsByClassName("hero-slides");
+  let slides = document.getElementsByClassName("hero-slide");
   document.addEventListener('DOMContentLoaded', function(){
     const continueBtn = document.getElementById('continueBtn');
     continueBtn.addEventListener('click', function(){
