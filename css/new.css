@@ -83,6 +83,7 @@ p {
         "hero-slide hero-slide hero-slide hero-slide hero-slide hero-slide"
         ". . slide-navigator slide-navigator . .";
     margin-top: 6%;
+    row-gap: 1rem; /* Add spacing between rows */
 }
 
 
@@ -105,9 +106,8 @@ p {
 .hero-content {
     display: grid;
     grid-area: hero-content;
-    height: 50vh;
+
     min-height: 50vh;
-    max-height: 50vh;
 }
 
 .hero-content h4 {
@@ -214,7 +214,6 @@ p {
     justify-self: start;
 }
 
-/* Center Icons */
 .center-submenu {
     grid-area: center;
     display: grid;
@@ -225,7 +224,7 @@ p {
     text-align: center;
 }
 
-/* Center Icon Links */
+
 .center-submenu a {
     display: grid;
     justify-items: center;
@@ -238,10 +237,10 @@ p {
     margin-top: 5px; 
 }
 
-/* Center Icons - Responsive */
+
 @media (max-width: 600px) {
     .center-submenu {
-        display: none; /* Hide center icons on small devices */
+        display: none; 
     }
 }
 
